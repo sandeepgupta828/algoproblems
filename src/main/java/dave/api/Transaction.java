@@ -1,4 +1,4 @@
-package sample.api;
+package dave.api;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;

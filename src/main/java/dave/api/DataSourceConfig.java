@@ -1,4 +1,4 @@
-package sample.api;
+package dave.api;
 
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

@@ -1,14 +1,13 @@
-package sample.api.buster;
+package dave.api.buster;
 
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.*;
 import org.springframework.http.client.SimpleClientHttpRequestFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
-import sample.api.buster.exception.BusterException;
-import sample.api.buster.model.BusterResponse;
-import sample.api.buster.model.KeyResponse;
+import dave.api.buster.exception.BusterException;
+import dave.api.buster.model.BusterResponse;
+import dave.api.buster.model.KeyResponse;
 
 import java.util.Collections;
 import java.util.Map;

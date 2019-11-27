@@ -1,4 +1,4 @@
-package sample.api.buster.model;
+package dave.api.buster.model;
 
 public class BusterResponse {
     private String id;

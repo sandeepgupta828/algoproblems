@@ -1,4 +1,4 @@
-package sample.api;
+package dave.api;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.ImmutableMap;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import sample.api.buster.model.BusterResponse;
-import sample.api.buster.BusterService;
+import dave.api.buster.model.BusterResponse;
+import dave.api.buster.BusterService;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +37,7 @@ public class TransactionController {
             return new ResponseEntity(saveTransactionToDB(response), HttpStatus.OK);
         } catch (Exception ex) {
             System.out.println(ex);
+            ex.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -51,6 +52,7 @@ public class TransactionController {
             return new ResponseEntity(allTransactions, HttpStatus.OK);
         } catch (Exception ex) {
             System.out.println(ex);
+            ex.printStackTrace();
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -69,6 +71,7 @@ public class TransactionController {
             transactionRepository.save(transaction);
         } catch (Exception ex) {
             System.out.println(ex);
+            ex.printStackTrace();
             // execute save to some fallback location (e.g. SQS)
             // do not propagate error to caller as failing to save to DB is not an error
         }

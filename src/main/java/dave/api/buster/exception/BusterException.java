@@ -1,4 +1,4 @@
-package sample.api.buster.exception;
+package dave.api.buster.exception;
 
 public class BusterException extends RuntimeException{
     private int errorCode = -1;
