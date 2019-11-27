@@ -11,6 +11,10 @@ apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
+bootJar {
+    mainClassName = 'sample.api.Application'
+}
+
 group 'algo'
 version '1.0-SNAPSHOT'
 
@@ -23,5 +27,9 @@ repositories {
 dependencies {
     compile 'com.google.guava:guava:28.1-jre'
     compile "org.springframework.boot:spring-boot-starter-web"
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    //runtimeOnly 'com.h2database:h2'
+    compile "mysql:mysql-connector-java"
+    compile 'org.apache.commons:commons-lang3:3.0'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
