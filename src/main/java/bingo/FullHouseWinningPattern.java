@@ -1,0 +1,14 @@
+package bingo;
+
+public class FullHouseWinningPattern extends WinningPattern {
+
+    @Override
+    public String name() {
+        return "Full House";
+    }
+
+    @Override
+    public boolean matches(Ticket ticket) {
+        return ticket.getCountMarked() == ticket.getNumberToTicketNumber().size();
+    }
+}
