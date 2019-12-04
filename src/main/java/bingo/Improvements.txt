@@ -1,18 +1,18 @@
 Game Check:
 ==========
 
-Total numbers that can be allocated: T
-Unique numbers allocated per player/ticket: u = (r=numbersPerRow X rows)
+Total numbers that can be allocated: 1-T
+Unique numbers allocated per player/ticket: u = (npr=numbersPerRow X rows)
 
-Total number combinations possible:
+Total unique number combinations possible:
 TCu
 
 Also since numbers are allocated to columns in first row:
 
-Total number of column allocation combinations per number combination: (N=rows, M=cols) MCr
+Total number of column allocation combinations per number combination: (N=rows, M=cols) MCnpr
 
 Total overall combinations:
-TCu X MCr
+TCu X MCnpr
 
 Check: total ticket allocations are less than above number, otherwise tickets are duplicated.
 

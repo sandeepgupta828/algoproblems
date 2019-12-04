@@ -1,54 +1,46 @@
 package bingo;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class TicketGenerator {
 
-    private NumberGenerator ticketNumGenerator;
-    private NumberGenerator ticketColIndexGenerator;
+    private UniqueNumberGenerator ticketNumGenerator;
     private int rows;
     private int cols;
     private int numbersPerRow;
 
     public TicketGenerator(int rows, int cols, int maxNumber, int numbersPerRow) {
-        this.ticketNumGenerator = new NumberGenerator(1, maxNumber);
-        this.ticketColIndexGenerator = new NumberGenerator(0, cols-1);
+        this.ticketNumGenerator = new UniqueNumberGenerator(new NumberGenerator(1, maxNumber));
         this.rows = rows;
         this.cols = cols;
         this.numbersPerRow = numbersPerRow;
     }
 
-    public Ticket generateNextTicket(int id) {
+    public Ticket generateNextTicket(int id, Map<Integer, TicketNumber> numberToTicketNumber, Map<Integer, List<Ticket>> numberToTickets) {
         TicketNumber[][] ticketArr = new TicketNumber[rows][];
-        Map<Integer, TicketNumber> numberToTicketNumber = new HashMap<>();
+        // create new ticket
+        Ticket ticket = new Ticket(id, ticketArr, this.rows*this.numbersPerRow);
+        // fill the ticket with unique numbers
         for (int i=0;i<rows;i++) {
-            Set<Integer> columnIndexes = new HashSet<>();
             ticketArr[i] = new TicketNumber[cols];
+            // random col index generator
+            UniqueNumberGenerator ticketColIndexGenerator = new UniqueNumberGenerator(new NumberGenerator(0, cols-1));
             for (int j=0;j<numbersPerRow;j++) {
-                int nextCol = getNextCol(columnIndexes);
-                columnIndexes.add(nextCol);
-                int nextNum = getNextNum(numberToTicketNumber.keySet());
-                ticketArr[i][nextCol] = new TicketNumber(nextNum);
+                int nextCol = ticketColIndexGenerator.next();
+                int nextNum = ticketNumGenerator.next();
+                // update number to TicketNumber map
+                // generate new TicketNumber if not already present (re-use)
+                numberToTicketNumber.putIfAbsent(nextNum, new TicketNumber(nextNum));
+                ticketArr[i][nextCol] = numberToTicketNumber.get(nextNum);
                 numberToTicketNumber.put(nextNum, ticketArr[i][nextCol]);
+                // update number to list of Tickets map
+                numberToTickets.putIfAbsent(nextNum, new ArrayList<>());
+                numberToTickets.get(nextNum).add(ticket);
             }
             // places that are not initialized with TicketNumber are null
         }
-        return new Ticket(id, ticketArr, numberToTicketNumber);
+        return ticket;
     }
 
-    private int getNextNum(Set<Integer> numbers) {
-        int nextNum = ticketNumGenerator.next();
-        while (numbers.contains(nextNum)) nextNum = ticketNumGenerator.next();
-        return nextNum;
-    }
-
-    private int getNextCol(Set<Integer> columnIndexes) {
-        int nextCol = ticketColIndexGenerator.next();
-        while (columnIndexes.contains(nextCol)) nextCol = ticketColIndexGenerator.next();
-        return nextCol;
-    }
 }
 

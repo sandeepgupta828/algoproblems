@@ -9,6 +9,6 @@ public class FirstFiveWinningPattern extends WinningPattern {
 
     @Override
     public boolean matches(Ticket ticket) {
-        return ticket.getCountMarked() >= 5;
+        return ticket.getMarkedCount() >=5;
     }
 }

@@ -1,8 +1,5 @@
 package bingo;
 
-import java.util.Arrays;
-import java.util.Objects;
-
 public class FirstRowWinningPattern extends WinningPattern {
 
     @Override
@@ -12,7 +9,6 @@ public class FirstRowWinningPattern extends WinningPattern {
 
     @Override
     public boolean matches(Ticket ticket) {
-        TicketNumber[] firstRow = ticket.getTicketNumbers()[0];
-        return Arrays.stream(firstRow).filter(Objects::nonNull).allMatch(ticketNumber -> ticketNumber.isMarked());
+        return ticket.computeMarkedCountForRow(0) == (ticket.getNumberCount()/ticket.getTicketNumbers().length); // numbers per row = total numbers/number of rows
     }
 }

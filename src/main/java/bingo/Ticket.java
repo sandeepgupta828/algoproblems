@@ -1,43 +1,48 @@
 package bingo;
 
 import java.util.Arrays;
-import java.util.Map;
 
 public class Ticket {
     private final int id;
     private final TicketNumber[][] ticketNumbers;
-    private final Map<Integer, TicketNumber> numberToTicketNumber;
-    private int countMarked = 0;
+    private final int numberCount;
+    private int markedCount = 0;
 
 
-    public Ticket(int id, TicketNumber[][] ticketNumbers, Map<Integer, TicketNumber> numberToTicketNumber) {
+    public Ticket(int id, TicketNumber[][] ticketNumbers, int numberCount) {
         this.id = id;
         this.ticketNumbers = ticketNumbers;
-        this.numberToTicketNumber = numberToTicketNumber;
+        this.numberCount = numberCount;
     }
 
     public int getId() {
         return id;
     }
 
-    public int getCountMarked() {
-        return countMarked;
-    }
-
     public TicketNumber[][] getTicketNumbers() {
         return ticketNumbers;
     }
 
-    public Map<Integer, TicketNumber> getNumberToTicketNumber() {
-        return numberToTicketNumber;
+    public int getNumberCount() {
+        return numberCount;
     }
 
-    public void markNumber(int number) {
-        TicketNumber ticketNumber = numberToTicketNumber.get(number);
-        if (ticketNumber != null && !ticketNumber.isMarked()) {
-            ticketNumber.setMarked(true);
-            ++countMarked;
+    public int incrementMarkedCount() {
+        return markedCount++;
+    }
+
+    public int getMarkedCount() {
+        return markedCount;
+    }
+
+    public int computeMarkedCountForRow(int rowIndex) {
+        int countMarked = 0;
+        for (TicketNumber number : ticketNumbers[rowIndex]) {
+            if (number != null && number.isMarked()) {
+                countMarked++;
+            }
         }
+        return countMarked;
     }
 
     @Override
@@ -45,7 +50,7 @@ public class Ticket {
         return "Ticket{" +
                 "id=" + id +
                 ", ticketNumbers=" + Arrays.deepToString(ticketNumbers) +
-                ", countMarked=" + countMarked +
+                ", countMarked=" + markedCount +
                 '}';
     }
 }

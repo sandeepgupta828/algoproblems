@@ -9,6 +9,6 @@ public class FullHouseWinningPattern extends WinningPattern {
 
     @Override
     public boolean matches(Ticket ticket) {
-        return ticket.getCountMarked() == ticket.getNumberToTicketNumber().size();
+        return ticket.getMarkedCount() == ticket.getNumberCount();
     }
 }
