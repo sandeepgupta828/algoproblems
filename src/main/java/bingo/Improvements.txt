@@ -1,46 +1,21 @@
-Game Check:
-==========
-
-Total numbers that can be allocated: 1-T
-Unique numbers allocated per player/ticket: u = (npr=numbersPerRow X rows)
-
-Total unique number combinations possible:
-TCu
-
-Also since numbers are allocated to columns in first row:
-
-Total number of column allocation combinations per number combination: (N=rows, M=cols) MCnpr
-
-Total overall combinations:
-TCu X MCnpr
-
-Check: total ticket allocations are less than above number, otherwise tickets are duplicated.
-
 Flexibility:
 ==========
-
 Ability to add more patterns in future.
-
-Optimizations:
-============
-Fast lookup of if number is present in a ticket
-De-duplicate same same numbers across ticket, as once a number is generated it is marked in same manner across all tickets.
 
 High Availability:
 =================
-
 Failover setup
 
 Scalability:
 ============
 
-(1) concurrent games
+(1) Concurrent games
 --game played via api calls on stateless api servers
 --any server can execute next step of game
 --game state is stored in persistent scalable backend DB
 --game state can be put in memcache (write through cache) for low latency
 
-(2) large number of players
+(2) Large number of players
 Parallelization of processing tickets for marking next generated number
 Not all tickets need to be load and processed by 1 server.
 
