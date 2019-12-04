@@ -2,6 +2,10 @@ package bingo;
 
 import java.util.Objects;
 
+/**
+ * Ticket number with state
+ * When a number is generated in game play and it is found in one of the tickets, it's state is changed to marked = true
+ */
 public class TicketNumber {
     private final int number;
     private boolean marked = false;

@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
- * stateful generator
+ * Generates successive random numbers such that they don't repeat (stateful)
  */
 public class UniqueNumberGenerator {
     private NumberGenerator numberGenerator;

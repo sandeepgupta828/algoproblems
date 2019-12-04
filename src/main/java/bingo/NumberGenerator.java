@@ -2,6 +2,9 @@ package bingo;
 
 import java.util.Random;
 
+/**
+ * Generates random numbers within given bounds both inclusive
+ */
 public class NumberGenerator {
     private int minNumber;
     private int maxNumber;
