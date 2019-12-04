@@ -4,19 +4,20 @@ import java.util.*;
 
 public class TicketGenerator {
 
-    private UniqueNumberGenerator ticketNumGenerator;
     private int rows;
     private int cols;
+    private int maxNumber;
     private int numbersPerRow;
 
     public TicketGenerator(int rows, int cols, int maxNumber, int numbersPerRow) {
-        this.ticketNumGenerator = new UniqueNumberGenerator(new NumberGenerator(1, maxNumber));
         this.rows = rows;
         this.cols = cols;
+        this.maxNumber = maxNumber;
         this.numbersPerRow = numbersPerRow;
     }
 
     public Ticket generateNextTicket(int id, Map<Integer, TicketNumber> numberToTicketNumber, Map<Integer, List<Ticket>> numberToTickets) {
+        UniqueNumberGenerator ticketNumGenerator = new UniqueNumberGenerator(new NumberGenerator(1, maxNumber));
         TicketNumber[][] ticketArr = new TicketNumber[rows][];
         // create new ticket
         Ticket ticket = new Ticket(id, ticketArr, this.rows*this.numbersPerRow);

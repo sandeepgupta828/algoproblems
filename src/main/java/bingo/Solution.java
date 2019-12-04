@@ -11,6 +11,6 @@ public class Solution {
         System.out.println(gameInput);
         GamePlay gamePlay = new GamePlay(gameInput);
         gamePlay.setup();
-        gamePlay.play();
+        gamePlay.play(true);
     }
 }

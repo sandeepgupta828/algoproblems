@@ -1,6 +1,7 @@
 package bingo;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.math3.util.Combinations;
 
 import java.util.List;
 import java.util.Scanner;
@@ -20,6 +21,13 @@ public class GameInput {
         this.ticketCols = ticketCols;
         this.numbersPerRow = numbersPerRow;
         this.winningPatterns = winningPatterns;
+        if ((numbersPerRow*ticketRows) > maxNumber) {
+            throw new RuntimeException("Invalid input: ticket cannot be generated for given ticket size and given max number");
+        }
+        // add other validations
+        // count of number combinations C1 = maxNumber(Choose)numberOfTickets*numbersPerRow
+        // count of column combinations C2 = ticketCols(Choose)numbersPerRow^ticketRows
+        // numberOfTickets <= C1*C2
     }
 
     public int getNumberOfTickets() {

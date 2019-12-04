@@ -37,13 +37,17 @@ public class GamePlay {
     /**
      * plays the game, mutates game state as game progresses
      */
-    public void play() {
+    public void play(boolean interactive) {
         Scanner scanner = new Scanner(System.in);
         String input;
         gameState.getTicketList().forEach(ticket -> System.out.println(ticket));
         do {
-            System.out.println(">> Press 'N' to generate next number.");
-            input = scanner.next();
+            if (interactive) {
+                System.out.println(">> Press 'N' to generate next number.");
+                input = scanner.next();
+            } else {
+                input = "N";
+            }
             if (input.equalsIgnoreCase("N")) {
                 int nextNumber = uniqueNumberGenerator.next();
                 if (nextNumber == -1) {
@@ -85,5 +89,13 @@ public class GamePlay {
                 }
             }
         });
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public UniqueNumberGenerator getUniqueNumberGenerator() {
+        return uniqueNumberGenerator;
     }
 }
