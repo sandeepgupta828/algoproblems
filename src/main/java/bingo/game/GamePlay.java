@@ -1,4 +1,10 @@
-package bingo;
+package bingo.game;
+
+import bingo.numbers.NumberGenerator;
+import bingo.numbers.UniqueNumberGenerator;
+import bingo.ticket.Ticket;
+import bingo.ticket.TicketGenerator;
+import bingo.ticket.TicketNumber;
 
 import java.util.*;
 

@@ -1,6 +1,6 @@
 import bingo.Defaults;
-import bingo.GameInput;
-import bingo.GamePlay;
+import bingo.game.GameInput;
+import bingo.game.GamePlay;
 import org.junit.Test;
 import org.springframework.util.Assert;
 

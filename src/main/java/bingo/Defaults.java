@@ -1,5 +1,10 @@
 package bingo;
 
+import bingo.patterns.FirstFiveWinningPattern;
+import bingo.patterns.FirstRowWinningPattern;
+import bingo.patterns.FullHouseWinningPattern;
+import bingo.patterns.WinningPattern;
+
 import java.util.ArrayList;
 import java.util.List;
 

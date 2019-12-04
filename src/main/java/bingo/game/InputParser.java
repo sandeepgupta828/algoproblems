@@ -1,5 +1,7 @@
-package bingo;
+package bingo.game;
 
+import bingo.Defaults;
+import bingo.game.GameInput;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.Scanner;

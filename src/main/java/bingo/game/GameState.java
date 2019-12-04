@@ -1,7 +1,8 @@
-package bingo;
+package bingo.game;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import bingo.ticket.Ticket;
+import bingo.ticket.TicketNumber;
+
 import java.util.List;
 import java.util.Map;
 

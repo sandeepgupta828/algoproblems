@@ -1,4 +1,4 @@
-package bingo;
+package bingo.numbers;
 
 import java.util.Random;
 

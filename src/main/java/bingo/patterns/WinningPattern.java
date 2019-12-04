@@ -1,4 +1,6 @@
-package bingo;
+package bingo.patterns;
+
+import bingo.ticket.Ticket;
 
 /**
  * Abstract class for winning patterns

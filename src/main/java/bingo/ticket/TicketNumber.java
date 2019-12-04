@@ -1,4 +1,4 @@
-package bingo;
+package bingo.ticket;
 
 import java.util.Objects;
 

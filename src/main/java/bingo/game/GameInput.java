@@ -1,10 +1,8 @@
-package bingo;
+package bingo.game;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.util.Combinations;
+import bingo.patterns.WinningPattern;
 
 import java.util.List;
-import java.util.Scanner;
 
 public class GameInput {
     private final int numberOfTickets;
