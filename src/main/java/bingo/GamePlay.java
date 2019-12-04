@@ -27,8 +27,8 @@ public class GamePlay {
         Map<Integer, List<Ticket>> numberToTickets = new HashMap<>();
         // generate tickets and associated lookup maps for fast search
         TicketGenerator ticketGenerator = new TicketGenerator(gameInput.getTicketRows(), gameInput.getTicketCols(), gameInput.getMaxNumber(), gameInput.getNumbersPerRow());
-        for (int i=0;i<gameInput.getNumberOfTickets();i++) {
-            ticketList.add(ticketGenerator.generateNextTicket(i+1, numberToTicketNumber, numberToTickets));
+        for (int i = 0; i < gameInput.getNumberOfTickets(); i++) {
+            ticketList.add(ticketGenerator.generateNextTicket(i + 1, numberToTicketNumber, numberToTickets));
         }
         // setup game state
         this.gameState = new GameState(ticketList, numberToTicketNumber, numberToTickets);
@@ -54,16 +54,17 @@ public class GamePlay {
                     System.out.println(">> All numbers are generated. Gamed ends.");
                     break; // we have generated all the numbers in the range
                 }
-                System.out.println("Next number is: "+nextNumber);
+                System.out.println("Next number is: " + nextNumber);
                 markNumber(nextNumber);
                 checkForWinningTickets();
             }
             gameState.getTicketList().forEach(ticket -> System.out.println(ticket));
-        } while(!input.equalsIgnoreCase("Q"));
+        } while (!input.equalsIgnoreCase("Q"));
     }
 
     /**
      * Mutates game state by marking a given number across all tickets that have the number
+     *
      * @param number
      */
     private void markNumber(int number) {
@@ -82,12 +83,12 @@ public class GamePlay {
      */
     private void checkForWinningTickets() {
         gameInput.getWinningPatterns().forEach(winningPattern -> {
-            for (Ticket ticket: gameState.getTicketList()) {
+            gameState.getTicketList().parallelStream().forEach(ticket -> {
                 if (!ticket.getPatternsWon().contains(winningPattern.name()) && winningPattern.matches(ticket)) {
-                    System.out.println("We have a winner: Player #"+ticket.getId() +" has won "+ winningPattern.name() + " winning combination");
+                    System.out.println("We have a winner: Player #" + ticket.getId() + " has won " + winningPattern.name() + " winning combination");
                     ticket.addWonPattern(winningPattern.name());
                 }
-            }
+            });
         });
     }
 
