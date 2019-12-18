@@ -1,7 +1,6 @@
 package bingo;
 
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.math3.util.Combinations;
 
 import java.util.List;
 import java.util.Scanner;
