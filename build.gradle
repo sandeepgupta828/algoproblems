@@ -12,7 +12,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
 bootJar {
-    mainClassName = 'dave.api.Application'
+    mainClassName = 'carta.api.Solution'
 }
 
 group 'algo'
