@@ -10,10 +10,10 @@ import java.util.Date;
 public class ShareData {
     private final Date investmentDate;
     private final Long sharesPurchased;
-    private final BigDecimal cashPaid;
+    private final Double cashPaid;
     private final String investor;
 
-    public ShareData(Date investmentDate, Long sharesPurchased, BigDecimal cashPaid, String investor) {
+    public ShareData(Date investmentDate, Long sharesPurchased, Double cashPaid, String investor) {
         this.investmentDate = investmentDate;
         this.sharesPurchased = sharesPurchased;
         this.cashPaid = cashPaid;
@@ -28,7 +28,7 @@ public class ShareData {
         return sharesPurchased;
     }
 
-    public BigDecimal getCashPaid() {
+    public Double getCashPaid() {
         return cashPaid;
     }
 
